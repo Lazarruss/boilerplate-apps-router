@@ -3,13 +3,13 @@ on: [pull_request]
 
 jobs:
   build:
-    runs-on: ubuntu-lastest
+    runs-on: ubuntu-latest
     steps:
       - name: Checkout Repository
-        uses: actions/checkout@v4
+        user: actions/checkout@v3
 
-      - name: Setup name
-        uses: actions/setup-node@v4
+      - name: Setup Node
+        uses: actions/setup-node@v3
         with:
           node-version: 18.x
           cache: 'npm'
@@ -18,12 +18,10 @@ jobs:
         run: npm install
 
       - name: Linting
-        run: npm lint
+        run: npm run lint
 
       - name: Testing
-        run: npm test
+        run: npm run test
 
       - name: Build
-        run: npm build
-
-        
+        run: npm run build
